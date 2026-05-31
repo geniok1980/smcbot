@@ -33,7 +33,7 @@
 │                         Docker Compose                              │
 │                                                                     │
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌───────────────────┐  │
-│  │  Bybit   │  │  Binance │  │ Telegram │  │   Web Dashboard   │  │
+│  │  Bybit   │  │  Bybit │  │ Telegram │  │   Web Dashboard   │  │
 │  │  (WS)    │  │  (WS)    │  │  (Bot)   │  │  (Next.js :3000)  │  │
 │  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────────┬──────────┘  │
 │       │              │             │                  │             │
@@ -51,7 +51,7 @@
 │  ┌────────────────┐  ┌────────────────┐  ┌──────────────────────┐  │
 │  │  Robot         │  │  Kline Scanner │  │  Positions Service   │  │
 │  │  (торговая     │  │  (свечи с      │  │  (снапшот позиций    │  │
-│  │   логика)      │  │   Binance)     │  │   с Bybit WS)        │  │
+│  │   логика)      │  │   Bybit)     │  │   с Bybit WS)        │  │
 │  └────────────────┘  └────────────────┘  └──────────────────────┘  │
 └─────────────────────────────────────────────────────────────────────┘
 ```
@@ -68,7 +68,7 @@
 - **Логирование всех событий и сделок** в PostgreSQL
 
 ### 📊 Сбор данных (Kline Scanner)
-- **WebSocket подключение к Binance** — реальные свечи (1m, 5m, 15m, 1h, 4h, 1d)
+- **WebSocket подключение к Bybit** — реальные свечи (1m, 5m, 15m, 1h, 4h, 1d)
 - **Автоматический пуш** в FastAPI для хранения
 - **Загрузка истории** — подгрузка прошлых свечей через REST API
 - **Множество торговых пар** — настраиваемый список символов
@@ -108,7 +108,7 @@
 | **ML** | LightGBM, XGBoost, scikit-learn, pandas, numpy |
 | **Дашборд** | Next.js 15, React 18, Tailwind CSS, shadcn/ui |
 | **Telegram-бот** | python-telegram-bot 21.x |
-| **Сбор данных** | websockets, aiohttp (Binance/Bybit WS API) |
+| **Сбор данных** | websockets, aiohttp (Bybit/Bybit WS API) |
 | **Инфраструктура** | Docker Compose |
 
 ## Быстрый старт
@@ -159,7 +159,7 @@ docker compose up -d --build
 | `ml` | `cryptobot-ml` | ML-сервис (предикты) | 8010 |
 | `telegram` | `cryptobot-telegram` | Telegram-бот управления | — |
 | `dashboard` | `cryptobot-dashboard` | Next.js веб-панель | 3000 |
-| `kline_scann` | `cryptobot-kline-scann` | Сбор свечей Binance WS | — |
+| `kline_scann` | `cryptobot-kline-scann` | Сбор свечей Bybit WS | — |
 | `positions` | `cryptobot-positions` | Снапшот позиций Bybit WS | — |
 
 Все сервисы используют общий `.env` файл из `SMCBOT/robot/.env`.
